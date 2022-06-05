@@ -8,7 +8,7 @@ Programming Language:
 Service We Use:
 - LeanCloud Global
 
-## Unhackable Team Members:
+## Unhackable Team Members
 
 - JIANG Guanlin (https://github.com/David200308)
 - ZHANG Wengyu(https://github.com/zhangwengyu999)
@@ -25,7 +25,7 @@ git clone https://github.com/Unhackable-PolyHack2022/CV-Chain.git
 cd personal && npm install
 cd business && npm install
 
-pip3 install leancloud  #(We use leadcloud SDK service)
+pip3 install leancloud  # We use leadcloud SDK service
 pip3 install flask
 pip3 install requests
 
