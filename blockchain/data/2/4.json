@@ -1,0 +1,12 @@
+{
+     "type": "School",
+     "data": {
+          "Name_of_Work_or_Study": "University of Wild Technology",
+          "data_1": "CS",
+          "data_2": "2025"
+     },
+     "index": 4,
+     "timestamp": "2022-06-02 13:36:05.055120",
+     "proof": 21391,
+     "previous_hash": "11fd741a7e97411bd957dfc34aa4ed07a073c1e2c173c2311c5dfb4b8d84e8fd"
+}

@@ -1,0 +1,12 @@
+{
+     "type": "School",
+     "data": {
+          "Name_of_Work_or_Study": "polyu",
+          "data_1": "cs",
+          "data_2": "2022"
+     },
+     "index": 2,
+     "timestamp": "2022-06-02 13:39:46.748733",
+     "proof": 8018,
+     "previous_hash": "6460427645c57eaf75ad6101fb9a13bc3c8856e517aef62385b46429fc48eb9a"
+}

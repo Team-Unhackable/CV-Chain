@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CV Chain</title>
+    <meta name="description" content="">
+    <!-- LeanCloud -->
+    <script src="https://code.bdstatic.com/npm/leancloud-storage@5.0.0-beta.0/dist/browser/lc.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.12.2/dist/av.min.js"></script>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="./../header.css" rel="stylesheet">
+    <link href="login.css" rel="stylesheet">
+    <script type="text/javascript" src="./../initLeanCloud.js"></script>
+    <script type="text/javascript" src="login.js"></script>
+  </head>
+  <body>
+    <div class="nav">
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-tabs pull-right">
+            <li role="presentation" class="active"><a href="login.html">Login</a></li>
+            <li role="presentation" ><a class="deactive" href="./../signup/signup.html">Signup</a></li>
+          </ul>
+        </nav>
+          <h3>CV Chain - The Curriculum Vitae Blockchain System (Business)</h3>
+        
+      </div>
+    </div> <!-- /container -->
+  </div>
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Login</h2>
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-block" type="submit">Login</button>
+        <button type="submit" class="btn btn-lg btn-block" onClick="location='https://cvchain.skyproton.com'" >Back</button>
+        
+      </form>
+    
+
+  </body>
+</html>

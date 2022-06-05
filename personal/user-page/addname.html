@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>User Page - CV Chain</title>
+        <link href="./../header.css" rel="stylesheet">
+        <link href="user-page.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="nav">
+            <div class="container">
+                <div class="header clearfix">
+                    <nav>
+                        <ul class="nav pull-right">
+                        </ul>
+                    </nav>
+                <h3 style="color: aliceblue">CV Chain - The Curriculum Vitae Blockchain System (Personal)</h3>
+                </div>
+            </div> <!-- /container -->
+        </div>
+        <br><br>
+        <center>
+        <h1 id="h"></h1>
+        <h3>Input your real name:
+        <input id="in"></input></h3>
+        <div class="container">
+            <button class="btn" id="btn" onclick="submit()">Submit</button>
+            <button class="btn" id="back" onclick="back()">Back</button>
+        </div>
+        <h1 id="h2"></h1>
+        </center>
+
+       
+
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.12.2/dist/av.min.js"></script>
+    <script>
+
+        AV.init({
+            appId: "",
+            appKey: "",
+            serverURL: ""
+        });
+    
+
+        const query = new AV.Query('_User');
+        query.equalTo('username', AV.User.current().get("username"));
+        query.find().then((students) => {
+
+            document.getElementById('h').innerText = "Hello! "+students[0].get("username");
+            students[0].save();
+            console.log(students[0].get("nameOnBlk"));
+
+        });
+
+        const query2 = new AV.Query('UserData');
+        query2.equalTo('username', AV.User.current().get("username"));
+        query2.find().then((datas) => {
+            if (datas.length>0) {
+            document.getElementById('btn').disabled = true;
+            document.getElementById('h2').innerText = "You have already added your real name. Please Click Back to User Page!";
+            }
+        });
+
+
+        
+        function submit () {
+            const query = new AV.Query('_User');
+            const userData = AV.Object.extend('UserData');
+            const inputName = document.getElementById('in').value;
+
+            query.equalTo('username', AV.User.current().get("username"));
+            query.find().then((students) => {
+                console.log(students[0].get("nameOnBlk"));
+                if ( inputName != "") {
+                    document.getElementById('btn').disabled = false;
+                    students[0].set("nameOnBlk", inputName);
+                    students[0].save();
+
+                    var newData = new userData();
+                    newData.set("username", AV.User.current().get("username"));
+                    newData.set("nameOnBlk", inputName);
+                    newData.save();
+
+                    document.getElementById('h').innerText = "Hello! "+AV.User.current().get("username");
+                    
+                    document.getElementById('btn').disabled = true;
+
+                    document.getElementById('h2').innerText = "Submit Successfully! Working in processing, please wait...";
+            
+                    var delayInMilliseconds = 2000; //1 second
+
+                    setTimeout(function() {
+                        document.getElementById('h2').innerText = "Add Real Name Successfully! Please Click Back to User Page!";
+                    }, delayInMilliseconds);
+
+                }
+                else {
+                    alert("Null input!");
+                }
+            });
+
+
+
+        }
+        function back() {
+            window.location.href = "./user-page.html";
+        }
+        
+        
+    </script>
+</html>

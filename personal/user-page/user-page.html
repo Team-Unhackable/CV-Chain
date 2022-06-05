@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page - CV Chain</title>
+    <meta name="description" content="JavaScript 存储入门 Demo">
+    <!-- LeanCloud -->
+    <script src="https://code.bdstatic.com/npm/leancloud-storage@5.0.0-beta.0/dist/browser/lc.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.12.2/dist/av.min.js"></script>
+    
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="./../header.css" rel="stylesheet">
+    <link href="user-page.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="./../initLeanCloud.js"></script>
+    <script type="text/javascript" src="user-page.js"></script>
+  </head>
+  <body>
+    <div class="nav">
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav pull-right">
+            <li role="presentation" ><a class="deactive" href="#" onclick="logout()">Log out</a></li>
+          </ul>
+        </nav>
+        <h3 >CV Chain - The Curriculum Vitae Blockchain System (Personal)</h3>
+      </div>
+    </div> <!-- /container -->
+  </div>
+  <div class="container">
+    <div class="pull-right">
+      <p id="welcome"></p> 
+    </div>
+  <h4 class="text-muted">Personal Information</h4>
+    <ul>
+      <li>Display Name: <h4 id="name"></h4></li>
+      <li>Email: <h4 id="email"></h4></li>
+      <li>UID: <h4 id="blkid">(Please Add UID)</h4></li>
+      <li>User Real Name: <h4 id="realname">(Please Add Real Name)</h4></li>
+    </ul>
+    <button class="btn" id="btn" onclick="jump()">Add Real Name</button>
+    <button class="btn" id="btn2" onclick="jump2()">Your Information Lookup</button>
+    
+
+</div>
+
+  </body>
+</html>

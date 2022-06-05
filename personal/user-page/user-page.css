@@ -1,0 +1,29 @@
+body {
+  padding-top: 0px;
+  padding-bottom: 20px;
+  
+}
+.nav {
+  max-width: 100%;
+  background-color:cornflowerblue;
+  
+}
+h3 {
+  color: aliceblue;
+}
+.container {
+  padding-top: 30px;
+}
+ul {
+  background-color:aliceblue;
+}
+.deactive {
+  color:aliceblue;
+}
+.new-product {
+	margin-bottom: 20px;
+}
+.btn {
+  background-color:cornflowerblue;
+  color: aliceblue;
+}

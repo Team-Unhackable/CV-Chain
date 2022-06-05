@@ -1,0 +1,31 @@
+AV.init({
+  appId: "",
+  appKey: "",
+  serverURL: ""
+});
+
+function login() {
+  const email = $("#inputEmail").val();
+  const password = $("#inputPassword").val();
+
+  // https://leancloud.cn/docs/leanstorage_guide-js.html#hash964666
+
+  AV.User.loginWithEmail(email, password).then(function () {
+
+  }, function (error) {
+
+  });
+
+  LC.User.loginWithEmail(email, password)
+    .then(() => {
+      window.location.href = "./../user-page/user-page.html";
+    })
+    .catch(({ error }) => alert(error));
+}
+
+$(function () {
+  $(".form-signin").on("submit", function (e) {
+    e.preventDefault();
+    login();
+  });
+});

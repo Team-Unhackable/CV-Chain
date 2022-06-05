@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="./../header.css" rel="stylesheet">
+        <link href="user-page.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <title>User Page - CV Chain</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <div class="container">
+              <div class="header clearfix">
+                <nav>
+                  <ul class="nav pull-right">
+                    </ul>
+                </nav>
+                <h3 style="color: aliceblue">CV Chain - The Curriculum Vitae Blockchain System (Business)</h3>
+              </div>
+            </div> <!-- /container -->
+          </div>
+        
+        <br><br>
+        <div class="container">
+        <center style="text-align: left">
+        <center><h1 id="h"></h1></center>
+        <div style="max-width: 500px; margin: auto;">
+        <h4>Enter Applicant UID:
+        <input id="in1"></input></h4>
+        <h4>
+        Enter the Job Title:
+        <input id="in2"></input></h4>
+        <h4>
+        Enter the Start Year:
+        <input id="in3"></input></h4>
+        
+        <button class = "btn" id="btn" onclick="submit()">Submit</button>
+        <button class = "btn" id="back" onclick="back()">Back</button>
+        <h1 id="h2"></h1>
+        </center>
+        </div>
+    </div>
+
+       
+
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.12.2/dist/av.min.js"></script>
+
+    <script>
+
+
+        AV.init({
+            appId: "",
+            appKey: "",
+            serverURL: ""
+        });
+    
+        document.getElementById('h').innerText = "Welcome! "+AV.User.current().get("username");
+      
+        
+        function submit () {
+            
+            const userData = AV.Object.extend('UserData');
+            const inUID = document.getElementById('in1').value;
+            const inJob = document.getElementById('in2').value;
+            const inYear = document.getElementById('in3').value;
+
+            if ( inUID != "" && inJob != "" && inYear != "") {
+
+
+                fetch('./../../blockchain/count/main.json')
+                    .then(res => res.json())
+                    .then((data) => {
+                        console.log(data.num); const count = data.num;
+
+                    if (parseInt(inUID) <= count && parseInt(inUID) > 1) {
+
+                        var newData = new userData();
+                        newData.set("companyName", AV.User.current().get("username"));
+                        newData.set("companyType", AV.User.current().get('companyType'));
+                        newData.set("UID", inUID);
+                        newData.set("DegreeOrJob", inJob);
+                        newData.set("ClassOrYear", inYear);
+                        newData.save();
+                        document.getElementById('h2').innerText = "Submit Successfully! Working in processing, please wait...";
+
+                        
+                        var delayInMilliseconds = 2000; 
+
+                        setTimeout(function() {
+
+                            document.getElementById('h2').innerText = "Add Job Successfully! Please Click Back to User Page!";
+                        }, delayInMilliseconds);
+                    } else {
+                        document.getElementById('h2').innerText = "Submit Unsuccessfully! UID not Found, please try again...";
+                    }
+                });
+            }
+            else {
+                alert("Null input!");
+            }
+            
+
+        }
+        function back() {
+            window.location.href = "./user-page.html";
+        }
+        
+        
+    </script>
+</html>

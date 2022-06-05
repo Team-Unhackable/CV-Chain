@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Explorer - CV Chain</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.bdstatic.com/npm/leancloud-storage@5.0.0-beta.0/dist/browser/lc.min.js"></script>
+    <link href="./../../header.css" rel="stylesheet">
+    <link href="../user-page.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="container">
+            <div class="header clearfix">
+                <nav>
+                    <ul class="nav pull-right">
+                    </ul>
+                </nav>
+            <h3 style="color: aliceblue">CV Chain - The Curriculum Vitae Blockchain System (Personal)</h3>
+            </div>
+        </div> <!-- /container -->
+    </div>
+    <br>
+    <br>
+    <br>
+    <center><h1>Block Information Explorer</h1></center>
+    <br>
+    <center><input type="text" id="txtID" placeholder="Enter your ID" required />
+    </center>
+    <br>
+    <center><button class="btn" onclick="search()">Search</button>
+    <button class="btn" id="back" onclick="back()">Back</button></center>
+    <br>
+    <div class="data"></div>
+    <br>
+    <br>
+    <h3><center><table class="data2" id="cv" style="width:70%; border-collapse: collapse; border: 1px solid;">
+    </table></center></h3>
+    <script>
+    function search() {
+        const id = document.getElementById('txtID');
+        console.log(id.value);
+
+        $.getJSON("./../../../blockchain/data/main/" + "main_block_" + id.value + ".json", function(data) {
+            var text = `
+                        <center>
+                        <h3>
+                        <table style="width:40%">
+                            <tr>
+                                <td><center>Name<br><br></td>
+                                <td><center>ID<br><br></td>
+                                <td><center>Creation Time<br><br></td>
+                            </tr>
+                            <tr>
+                                <td><center>${data.data}</td>
+                                <td><center>${data.index}</td>
+                                <td><center>${data.timestamp}</td>
+                            </tr>
+                            
+                        </table>
+                        </h3>
+                        </center>
+                        `
+            $(".data").html(text);
+        });
+
+        
+
+            let uList = document.getElementById('cv');
+            uList.innerHTML = ``;
+            
+            let liObj0 = document.createElement('tbody');
+            liObj0.innerHTML = `
+                <h2><tr>
+                    <td><center>Type<br><br></td>
+                    <td><center>Name of Work / Study<br><br></td>
+                    <td><center>Job / Degree<br><br></td>
+                    <td><center>Start Time / Class<br><br></td>
+                </tr></h2>
+            `;
+            uList.appendChild(liObj0);
+
+
+            fetch("./../../../blockchain/count/" + id.value + ".json")
+                .then(res => res.json())
+                .then(data => {console.log(data.num); const count = data.num;
+                    for (let i = 0; i < count; i++) {
+                        let liObj = document.createElement('tbody');
+                        $.getJSON("./../../../blockchain/data/" + id.value + "/" + (i + 2) + ".json", function(data2) {
+                            liObj.innerHTML = `
+                                
+                                    <tr style="border: 1px solid;">
+                                        <td><center>${data2.type}</td>
+                                        <td><center>${data2.data.Name_of_Work_or_Study}</td>
+                                        <td><center>${data2.data.data_1}</td>
+                                        <td><center>${data2.data.data_2}</td>
+                                    </tr>
+                            `;
+                        });
+
+                        
+                        uList.appendChild(liObj);
+                    }
+                
+                });
+
+    }
+    function back() {
+        window.location.href = "./../user-page.html";
+    }
+    </script>
+
+</body>
+</html>
+
+
