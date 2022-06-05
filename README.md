@@ -5,6 +5,9 @@ Programming Language:
 - HTML + JS + CSS
 - Python3
 
+Service We Use:
+- LeanCloud Global
+
 ## Unhackable Team Members:
 
 - JIANG Guanlin (https://github.com/David200308)
@@ -25,6 +28,7 @@ cd business && npm install
 pip3 install leancloud  #(We use leadcloud SDK service)
 pip3 install flask
 pip3 install requests
+
 ```
 P.S. Config Web Server (Ex: Apache Web Server, Nginx)
 
