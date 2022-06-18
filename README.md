@@ -2,8 +2,8 @@
 A Curriculum Vitae System based on Blockchain Technology
 
 Programming Language:
-- HTML + JS + CSS
-- Python3
+- HTML + JS + CSS (for front)
+- Python3 + JS (for background)
 
 Service We Use:
 - LeanCloud Global
