@@ -11,7 +11,7 @@ Service We Use:
 ## Unhackable Team Members
 
 - JIANG Guanlin (https://github.com/David200308)
-- ZHANG Wengyu(https://github.com/zhangwengyu999)
+- ZHANG Wengyu (https://github.com/wyuzh)
 - LIU Minghao (https://github.com/David-Lmh)
 - CHEN Ziyang (https://github.com/ChenZiyangRocky)
 
